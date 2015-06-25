@@ -1,0 +1,18 @@
+{
+  "statusCodes" : {
+    "1": "orderStarted",
+    "2": "OrderWaitingConfirmation",
+    "3": "orderConfirmed",
+    "4": "orderProcessed",
+    "5": "orderSent",
+    "6": "orderComplete",
+    "7": "orderCanceled"
+  },
+  "catalogue" : {
+    "resultsPerPage" : 12,
+    "sortBy" : "eshop.price",
+    "sortWay" : "asc",
+    "priceRangeSteps" : 5,
+    "priceRangeInterval" : 50
+  }
+}

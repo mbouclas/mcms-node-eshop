@@ -1,0 +1,25 @@
+{
+  "orderStatusSubject": {
+    "admin": {
+      "orderStarted": "Order  %(orderID)s has started",
+      "OrderWaitingConfirmation": "Order  %(orderID)s is waiting confirmation",
+      "orderProcessed": "Order  %(orderID)s is being processed",
+      "orderConfirmed": "Order  %(orderID)s was confirmed",
+      "orderCanceled": "Order  %(orderID)s was canceled"
+    },
+    "customer": {
+      "orderStarted": "Order  %(orderID)s has started",
+      "orderConfirmed": "Order confirmation",
+      "orderProcessed": "Your order is being processed",
+      "orderSent": "Your order is under way",
+      "orderComplete": "Thank you for your business",
+      "orderCanceled": "Your order was canceled"
+    }
+  },
+  "auth": {
+    "customerSignUpSubject": " %(userName)s welcome to get-a-bag.com",
+    "customerForgotPasswordSubject": "Password reset request for %(siteName)s"
+  },
+  "contactFormSubject": "New message from %(siteName)s contact form",
+  "quickContactProductSubject": "New question on product %(sku)s"
+}
