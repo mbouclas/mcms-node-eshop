@@ -1,0 +1,21 @@
+{
+  "name" : "mcms-node-eshop",
+  "package" : "mcms-node-eshop",
+  "modules" : [
+
+  ],
+  "devFiles" : {
+    "js" : [
+    ],
+    "css" : [
+    ]
+  },
+  "files" : {
+    "js" : [
+    ],
+    "css" : []
+  },
+  "menus" : [
+
+  ]
+}

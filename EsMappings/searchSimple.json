@@ -1,0 +1,85 @@
+{
+  "size": "15",
+  "from": 0,
+  "sort": {
+    "created_at": {
+      "order": "desc"
+    }
+  },
+  "query": {
+    "bool": {
+      "must": {
+        "terms": {
+          "active": [
+            true
+          ]
+        }
+      },
+      "should": [
+        {
+          "terms": {
+            "categories": [
+              "55355ae0d35cb3c46fa5229e"
+            ]
+          }
+        },
+        {
+          "terms": {
+            "active": [
+              true
+            ]
+          }
+        }
+      ],
+      "minimum_should_match": 9999
+    }
+  },
+  "aggs": {
+    "categories": {
+      "terms": {
+        "field": "categories"
+      }
+    },
+    "fields": {
+      "nested": {
+        "path": "ExtraFields"
+      },
+      "aggs": {
+        "fields": {
+          "terms": {
+            "field": "ExtraFields.fieldID"
+          },
+          "aggs": {
+            "values": {
+              "terms": {
+                "field": "ExtraFields.value",
+                "size" : 0,
+                "order": {
+                  "_count" : "desc"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "priceRange" : {
+      "histogram" : {
+        "field" : "eshop.price",
+        "interval" : 50
+      }
+    },
+    "prices" : { "stats" : { "field" : "eshop.price" } },
+    "price_ranges" : {
+      "range" : {
+        "field" : "eshop.price",
+        "ranges" : [
+          { "to" : 50 },
+          { "from" : 50, "to" : 100 },
+          { "from" : 100, "to" : 200 },
+          { "from" : 200 }
+        ]
+      }
+    }
+  }
+}

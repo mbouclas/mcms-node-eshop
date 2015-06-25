@@ -1,0 +1,101 @@
+{
+  "settings":{
+    "index":{
+      "analysis":{
+        "analyzer":{
+          "analyzer_startswith":{
+            "tokenizer":"keyword",
+            "filter":"lowercase"
+          },
+          "prefix-test-analyzer": {
+            "type": "custom",
+            "tokenizer": "standard",
+            "filter" : ["lowercase", "standard","stop","mynGram"]
+          }
+        },
+        "filter" : {
+          "mynGram" : {
+            "type" : "nGram",
+            "min_gram" : 2,
+            "max_gram" : 50
+          }
+        },
+        "tokenizer": {
+          "prefix-test-tokenizer": {
+            "type": "path_hierarchy",
+            "delimiter": "."
+          }
+        }
+      }
+    }
+  },
+  "mappings":{
+    "product": {
+      "_source"   : {
+        "enabled": true
+      },
+      "properties": {
+        "id"             : {
+          "type": "string"
+        },
+        "title"        : {
+          "search_analyzer":"keyword",
+          "index_analyzer":"prefix-test-analyzer",
+          "type":"string"
+        },
+        "uid"            : {
+          "type": "string"
+        },
+        "permalink"  : {
+          "type" : "string"
+        },
+        "description"           : {
+          "type" : "string",
+          "store" : true,
+          "index" : "analyzed",
+          "null_value" : "na"
+        },
+        "description_long"      : {
+          "type" : "string",
+          "store" : true,
+          "index" : "analyzed",
+          "null_value" : "na"
+        },
+        "active"       : {
+          "type"   : "boolean"
+        },
+        "created_at"           : {
+          "type": "date"
+        },
+        "updated_at"           : {
+          "type": "date"
+        },
+        "eshop": {
+          "properties" : {
+            "price" : {
+              "type" : "float"
+            },
+            "price" : {
+              "type" : "float",
+              "list_price" : "float",
+              "quantity" : "integer"
+            }
+          }
+        },
+        "ExtraFields": {
+          "type": "nested",
+          "properties": {
+            "value": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "fieldID": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        }
+      }
+    }
+  }
+}

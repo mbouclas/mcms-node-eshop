@@ -1,0 +1,22 @@
+{
+  "name": "mcms-node-eshop",
+  "description": "Eshop module for mcms-node",
+  "version": "0.1.4",
+  "license": "MIT",
+  "author": {
+    "name": "Michael Bouclas",
+    "email": "mbouclas@gmail.com",
+    "url": "http://www.net-tomorrow.com"
+  },
+  "dependencies": {
+    "del": "^1.1.1",
+    "elasticsearch": "^4.0.2",
+    "fs-extra": "^0.16.5",
+    "lodash": "^3.7.0",
+    "mcms-node-cart": "0.0.5",
+    "mcms-node-eager-loader": "0.0.8",
+    "mongoosastic": "^3.1.0",
+    "mongoose": "^4.0.4",
+    "mongoose-materialized": "^0.1.8"
+  }
+}

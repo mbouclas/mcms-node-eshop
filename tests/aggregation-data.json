@@ -1,0 +1,684 @@
+{
+  "priceRanges": {
+    "buckets": [
+      {
+        "key": "*-50.0",
+        "to": 50,
+        "to_as_string": "50.0",
+        "doc_count": 0
+      },
+      {
+        "key": "50.0-100.0",
+        "from": 50,
+        "from_as_string": "50.0",
+        "to": 100,
+        "to_as_string": "100.0",
+        "doc_count": 189
+      },
+      {
+        "key": "100.0-200.0",
+        "from": 100,
+        "from_as_string": "100.0",
+        "to": 200,
+        "to_as_string": "200.0",
+        "doc_count": 21
+      },
+      {
+        "key": "200.0-*",
+        "from": 200,
+        "from_as_string": "200.0",
+        "doc_count": 0
+      }
+    ]
+  },
+  "priceRange": {
+    "buckets": [
+      {
+        "key": 50,
+        "doc_count": 189
+      },
+      {
+        "key": 100,
+        "doc_count": 17
+      },
+      {
+        "key": 150,
+        "doc_count": 4
+      }
+    ]
+  },
+  "ExtraFields": {
+    "doc_count": 2183,
+    "fields": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 117,
+      "buckets": [
+        {
+          "key": "5535627831efa0843554b0f0",
+          "doc_count": 209,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "0.42",
+                "doc_count": 69
+              },
+              {
+                "key": "0.7",
+                "doc_count": 20
+              },
+              {
+                "key": "0.51",
+                "doc_count": 18
+              },
+              {
+                "key": "0.9",
+                "doc_count": 16
+              },
+              {
+                "key": "1.8",
+                "doc_count": 15
+              },
+              {
+                "key": "0",
+                "doc_count": 14
+              },
+              {
+                "key": "0.48",
+                "doc_count": 9
+              },
+              {
+                "key": "0.92",
+                "doc_count": 5
+              },
+              {
+                "key": "1.97",
+                "doc_count": 5
+              },
+              {
+                "key": "0.68",
+                "doc_count": 4
+              },
+              {
+                "key": "0.94",
+                "doc_count": 4
+              },
+              {
+                "key": "1.036",
+                "doc_count": 4
+              },
+              {
+                "key": "1.05",
+                "doc_count": 4
+              },
+              {
+                "key": "1.1",
+                "doc_count": 4
+              },
+              {
+                "key": "0.831",
+                "doc_count": 3
+              },
+              {
+                "key": "0.22",
+                "doc_count": 2
+              },
+              {
+                "key": "0.53",
+                "doc_count": 2
+              },
+              {
+                "key": "0.65",
+                "doc_count": 2
+              },
+              {
+                "key": "0.743",
+                "doc_count": 2
+              },
+              {
+                "key": "0.398",
+                "doc_count": 1
+              },
+              {
+                "key": "0.45",
+                "doc_count": 1
+              },
+              {
+                "key": "0.85",
+                "doc_count": 1
+              },
+              {
+                "key": "1.067",
+                "doc_count": 1
+              },
+              {
+                "key": "1.89",
+                "doc_count": 1
+              },
+              {
+                "key": "1036",
+                "doc_count": 1
+              },
+              {
+                "key": "42",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627831efa0843554b0f4",
+          "doc_count": 209,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "24",
+                "doc_count": 77
+              },
+              {
+                "key": "27",
+                "doc_count": 33
+              },
+              {
+                "key": "38",
+                "doc_count": 20
+              },
+              {
+                "key": "33",
+                "doc_count": 16
+              },
+              {
+                "key": "35",
+                "doc_count": 12
+              },
+              {
+                "key": "39",
+                "doc_count": 9
+              },
+              {
+                "key": "0",
+                "doc_count": 7
+              },
+              {
+                "key": "16",
+                "doc_count": 6
+              },
+              {
+                "key": "17.5",
+                "doc_count": 5
+              },
+              {
+                "key": "26",
+                "doc_count": 4
+              },
+              {
+                "key": "15",
+                "doc_count": 3
+              },
+              {
+                "key": "17",
+                "doc_count": 3
+              },
+              {
+                "key": "19",
+                "doc_count": 3
+              },
+              {
+                "key": "20",
+                "doc_count": 3
+              },
+              {
+                "key": "21",
+                "doc_count": 3
+              },
+              {
+                "key": "28",
+                "doc_count": 3
+              },
+              {
+                "key": "65",
+                "doc_count": 1
+              },
+              {
+                "key": "80",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627831efa0843554b0f1",
+          "doc_count": 208,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "40",
+                "doc_count": 83
+              },
+              {
+                "key": "44",
+                "doc_count": 45
+              },
+              {
+                "key": "48",
+                "doc_count": 15
+              },
+              {
+                "key": "32",
+                "doc_count": 12
+              },
+              {
+                "key": "42",
+                "doc_count": 11
+              },
+              {
+                "key": "45",
+                "doc_count": 8
+              },
+              {
+                "key": "43",
+                "doc_count": 6
+              },
+              {
+                "key": "49",
+                "doc_count": 6
+              },
+              {
+                "key": "39",
+                "doc_count": 5
+              },
+              {
+                "key": "47",
+                "doc_count": 5
+              },
+              {
+                "key": "26",
+                "doc_count": 3
+              },
+              {
+                "key": "29",
+                "doc_count": 3
+              },
+              {
+                "key": "52",
+                "doc_count": 3
+              },
+              {
+                "key": "30",
+                "doc_count": 1
+              },
+              {
+                "key": "41",
+                "doc_count": 1
+              },
+              {
+                "key": "77",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627831efa0843554b0f2",
+          "doc_count": 208,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "30",
+                "doc_count": 84
+              },
+              {
+                "key": "29",
+                "doc_count": 36
+              },
+              {
+                "key": "31",
+                "doc_count": 25
+              },
+              {
+                "key": "32",
+                "doc_count": 16
+              },
+              {
+                "key": "42",
+                "doc_count": 12
+              },
+              {
+                "key": "34",
+                "doc_count": 7
+              },
+              {
+                "key": "23",
+                "doc_count": 5
+              },
+              {
+                "key": "27",
+                "doc_count": 5
+              },
+              {
+                "key": "33",
+                "doc_count": 4
+              },
+              {
+                "key": "35",
+                "doc_count": 4
+              },
+              {
+                "key": "39",
+                "doc_count": 3
+              },
+              {
+                "key": "47",
+                "doc_count": 3
+              },
+              {
+                "key": "29.5",
+                "doc_count": 2
+              },
+              {
+                "key": "37",
+                "doc_count": 1
+              },
+              {
+                "key": "40",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627831efa0843554b0f3",
+          "doc_count": 208,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "18",
+                "doc_count": 76
+              },
+              {
+                "key": "25",
+                "doc_count": 40
+              },
+              {
+                "key": "22",
+                "doc_count": 29
+              },
+              {
+                "key": "16",
+                "doc_count": 11
+              },
+              {
+                "key": "26",
+                "doc_count": 9
+              },
+              {
+                "key": "14",
+                "doc_count": 8
+              },
+              {
+                "key": "24",
+                "doc_count": 8
+              },
+              {
+                "key": "12",
+                "doc_count": 7
+              },
+              {
+                "key": "15",
+                "doc_count": 7
+              },
+              {
+                "key": "13",
+                "doc_count": 4
+              },
+              {
+                "key": "20",
+                "doc_count": 4
+              },
+              {
+                "key": "185",
+                "doc_count": 1
+              },
+              {
+                "key": "19",
+                "doc_count": 1
+              },
+              {
+                "key": "21",
+                "doc_count": 1
+              },
+              {
+                "key": "23",
+                "doc_count": 1
+              },
+              {
+                "key": "28",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627631efa0843554b0ed",
+          "doc_count": 207,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "30",
+                "doc_count": 202
+              },
+              {
+                "key": "2",
+                "doc_count": 5
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627631efa0843554b0ea",
+          "doc_count": 206,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "print",
+                "doc_count": 79
+              },
+              {
+                "key": "0000ff",
+                "doc_count": 28
+              },
+              {
+                "key": "808080",
+                "doc_count": 24
+              },
+              {
+                "key": "000000",
+                "doc_count": 23
+              },
+              {
+                "key": "ffc0cb",
+                "doc_count": 15
+              },
+              {
+                "key": "a52a2a",
+                "doc_count": 8
+              },
+              {
+                "key": "ff0000",
+                "doc_count": 7
+              },
+              {
+                "key": "008000",
+                "doc_count": 5
+              },
+              {
+                "key": "800080",
+                "doc_count": 4
+              },
+              {
+                "key": "PRINT",
+                "doc_count": 3
+              },
+              {
+                "key": "f5f5dc",
+                "doc_count": 3
+              },
+              {
+                "key": "ffa500",
+                "doc_count": 3
+              },
+              {
+                "key": "ffff00",
+                "doc_count": 2
+              },
+              {
+                "key": "0000FF",
+                "doc_count": 1
+              },
+              {
+                "key": "A52A2A",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627631efa0843554b0ee",
+          "doc_count": 205,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "0",
+                "doc_count": 203
+              },
+              {
+                "key": "false",
+                "doc_count": 1
+              },
+              {
+                "key": "true",
+                "doc_count": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627731efa0843554b0ef",
+          "doc_count": 204,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "0",
+                "doc_count": 202
+              },
+              {
+                "key": "false",
+                "doc_count": 2
+              }
+            ]
+          }
+        },
+        {
+          "key": "5535627631efa0843554b0ec",
+          "doc_count": 202,
+          "values": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+              {
+                "key": "POLYE",
+                "doc_count": 99
+              },
+              {
+                "key": "POLYA",
+                "doc_count": 50
+              },
+              {
+                "key": "polye",
+                "doc_count": 17
+              },
+              {
+                "key": "pole_a",
+                "doc_count": 11
+              },
+              {
+                "key": "POLE_A",
+                "doc_count": 9
+              },
+              {
+                "key": "nylon",
+                "doc_count": 5
+              },
+              {
+                "key": "COTT",
+                "doc_count": 3
+              },
+              {
+                "key": "LEATHER",
+                "doc_count": 3
+              },
+              {
+                "key": "polya",
+                "doc_count": 2
+              },
+              {
+                "key": "POLE",
+                "doc_count": 1
+              },
+              {
+                "key": "POLE&A",
+                "doc_count": 1
+              },
+              {
+                "key": "pOLYE",
+                "doc_count": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "prices": {
+    "count": 210,
+    "min": 50,
+    "max": 190,
+    "avg": 69.39047619047619,
+    "sum": 14572
+  },
+  "categories": {
+    "doc_count_error_upper_bound": 0,
+    "sum_other_doc_count": 0,
+    "buckets": [
+      {
+        "key": "55355ae0d35cb3c46fa5229e",
+        "doc_count": 210
+      },
+      {
+        "key": "55355ae0d35cb3c46fa52295",
+        "doc_count": 59
+      },
+      {
+        "key": "55355ae0d35cb3c46fa52289",
+        "doc_count": 15
+      }
+    ]
+  }
+}
