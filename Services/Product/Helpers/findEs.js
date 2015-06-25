@@ -459,5 +459,4 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
 
     return find;
-
 });
