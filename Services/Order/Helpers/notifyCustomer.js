@@ -8,19 +8,18 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
     function notifyCustomer(Order,callback){
         var Notification = {
-            mailTemplate : selectEmailTemplate(),
+            mailTemplate : selectEmailTemplate(Order.status),
             to : {
                 email : Order.email,
                 name : Order.orderInfo.firstName + ' ' + Order.orderInfo.lastName
             },
             subject : App.Lang.get('emails.orderStatusSubject.customer.' + selectStatusCode(Order.status),{orderID: Order.orderId}),
             data : {
-                order : Order,
-                Config : App.Config
+                order : Order
             }
         };
         //we need a method pushNotificationToQueue
-        App.Queue.put(Notification,function(err,jobID){
+        App.Queue.put('orderNotificationDispatcher',Notification,function(err,jobID){
 
             App.Event.emit('order.customerNotified',jobID);
             if (callback){
@@ -33,7 +32,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
         return App.Config.eshop.statusCodes[code];
     }
 
-    function selectEmailTemplate(){
-        return '';
+    function selectEmailTemplate(status){
+        return 'customer'+App.Config.eshop.statusCodes[status];
     }
 });

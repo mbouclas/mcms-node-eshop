@@ -19,8 +19,8 @@ module.exports =  {
     related : {
         as : 'related',
         join : 'getPageRelated',
-        onSource : '_id',
-        onDest : 'id',
+        onSource : 'id',
+        onDest : '_id',
         inject : 'related'
     },
 

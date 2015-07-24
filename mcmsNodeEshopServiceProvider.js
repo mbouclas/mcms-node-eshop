@@ -54,8 +54,8 @@ module.exports = (function(App){
             },function(err,discount){
                 console.log(discount)
             });*/
-            var slug = require('slug'),
-                moment = require('moment');
+/*            var slug = require('slug'),
+                moment = require('moment');*/
 /*            var cp = [
                 {
                     "code": "5451",
@@ -91,6 +91,7 @@ module.exports = (function(App){
 /*            _this.services.Order.find(query,{sanitizeForAjax:true,with:['payment']},function(err,result){
                 console.log(result)
             })*/
+
         },2000);
 
         miniApp.use(expressCart);

@@ -145,8 +145,8 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
         filters = searchFor;
         ProductModel.aggregate(Query)
-            .limit(limit)
             .skip((page - 1) * limit)
+            .limit(limit)
             .sort(way + sort)
             .exec(function(err,items){
                 Aggregate = Query;

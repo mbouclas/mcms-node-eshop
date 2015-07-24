@@ -73,6 +73,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
             if (product == null){
                 return callback('productNotFound');
             }
+
             if (Options.applyDiscounts){
                 Package.services.Discount.applyDiscount(product);
             }

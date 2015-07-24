@@ -15,12 +15,11 @@ module.exports = (function(App,Connection,Package,privateMethods){
             },
             subject : App.Lang.get('emails.orderStatusSubject.admin.' + selectStatusCode(Order.status),{orderID: Order.orderId}),
             data : {
-                order : Order,
-                Config : App.Config
+                order : Order
             }
         };
         //we need a method pushNotificationToQueue
-        App.Queue.put(Notification,function(err,jobID){
+        App.Queue.put('orderNotificationDispatcher',Notification,function(err,jobID){
             App.Event.emit('order.adminNotified',jobID);
             if (callback){
                 return callback(err,jobID);
@@ -32,7 +31,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
         return App.Config.eshop.statusCodes[code];
     }
 
-    function selectEmailTemplate(){
-        return '';
+    function selectEmailTemplate(status){
+        return 'admin'+App.Config.eshop.statusCodes[status];
     }
 });

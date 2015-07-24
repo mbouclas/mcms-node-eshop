@@ -30,7 +30,11 @@ module.exports = function (mongoose, modelName) {
             unitsSold : Number
         },
         thumb :{},
-        mediaFiles : {},
+        mediaFiles : {
+            images : [],
+            documents : [],
+            videos : []
+        },
         related :[],
         upselling :[],
         productOptions : {},

@@ -8,7 +8,8 @@ module.exports = (function(App,Package){
             getPageRelated : require('./Helpers/Private/getPageRelated')(App,Connection,Package),
             getPageExtraFields : require('./Helpers/Private/getPageExtraFields')(App,Connection,Package),
             countExtraFields : require('./Helpers/Private/countExtraFields')(App,Connection,Package),
-            parseEsAggregations : require('./Helpers/Private/parseEsAggregations')(App,Connection,Package)
+            parseEsAggregations : require('./Helpers/Private/parseEsAggregations')(App,Connection,Package),
+            formatItem : require('./Helpers/Private/formatItem')(App,Connection,Package)
         };
 
 
