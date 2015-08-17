@@ -1,0 +1,34 @@
+<form method="POST" role="form" ng-submit="VM.saveProduct()" name="pageForm">
+<div alert-message="VM.success">Saved...</div>
+
+	<legend>{{ VM.Product.title || 'New product' }}</legend>
+
+    <mcms-tabs class="tabbable" id="editProduct">
+        <ul class="nav nav-tabs tab-bricky" id="myTabs">
+            <tab-button state="general"><i class="green fa fa-home"></i> General</tab-button>
+            <tab-button state="mediaFiles">Media Files</tab-button>
+            <tab-button state="extraFields">Extra Fields</tab-button>
+            <tab-button state="related">Related</tab-button>
+        </ul>
+
+    </mcms-tabs>
+    <div class="tabbable">
+
+        <div class="tab-content">
+            <div id="general" class="tab-pane active">
+                <product-general-information></product-general-information>
+            </div><!-- END TAB -->
+            <div id="extraFields" class="tab-pane">
+                <product-extra-fields></product-extra-fields>
+            </div><!-- END TAB -->
+            <div id="mediaFiles" class="tab-pane">
+                <product-media-files></product-media-files>
+            </div><!-- END TAB -->
+            <div id="related" class="tab-pane">
+                <product-related-items></product-related-items>
+            </div><!-- END TAB -->
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-lg">Save</button>
+</form>

@@ -2,20 +2,64 @@
   "name" : "mcms-node-eshop",
   "package" : "mcms-node-eshop",
   "modules" : [
-
+    "mcms.eshop"
   ],
   "devFiles" : {
     "js" : [
+      "assets/build/js/mcms-node-eshop-dev.js"
     ],
     "css" : [
+      "build/css/mcms-node-eshop-dev.css"
     ]
   },
   "files" : {
     "js" : [
+      "assets/build/js/mcms-node-eshop-dev.js"
     ],
-    "css" : []
+    "css" : [
+      "build/css/mcms-node-eshop-dev.css"
+    ]
   },
   "menus" : [
-
+    {
+      "title" : "Products",
+      "href" : "products",
+      "items" : [
+        {
+          "title" : "Products",
+          "href" : "products"
+        },
+        {
+          "title" : "Categories",
+          "href" : "products/categories"
+        },
+        {
+          "title" : "Settings",
+          "href" : "products/settings"
+        }
+      ]
+    },
+    {
+      "title" : "E-Shop",
+      "href" : "eshop",
+      "items" : [
+        {
+          "title" : "Orders",
+          "href" : "eshop/orders"
+        },
+        {
+          "title" : "Shipping Methods",
+          "href" : "eshop/shipping"
+        },
+        {
+          "title" : "Payment Methods",
+          "href" : "eshop/payment"
+        },
+        {
+          "title" : "Settings",
+          "href" : "eshop/settings"
+        }
+      ]
+    }
   ]
 }

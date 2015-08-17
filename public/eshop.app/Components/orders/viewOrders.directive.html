@@ -1,0 +1,34 @@
+<h3>{{VM.Count}} Orders</h3>
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>email</th>
+        <th>Customer</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Amount</th>
+    </tr>
+    <tr ng-if="VM.filters">
+        <td ng-repeat="(key,filter) in VM.filters  | orderBy:'order' ">
+            <form-filter model="filter" ng-model="filter.value" type="{{ filter.fieldType }}"
+                         placeholder="{{ filter.placeholder }}"
+                         class="form-control" ng-change="VM.filterItems()"></form-filter>
+        </td>
+    </tr>
+    </thead>
+    <tr ng-repeat="order in VM.Orders">
+        <td><a href="#/orders/view/{{order.orderId}}">{{ order.orderId }}</a></td>
+        <td>{{ order.email }}</td>
+        <td>{{ order.orderInfo.firstName }} {{ order.orderInfo.lastName }}</td>
+        <td>{{ order.created_at | moment }}</td>
+        <td class="orderStatus-{{order.status}}">{{VM.Lang.userPanel.statusCodes[VM.statusCodes[order.status]]}}</td>
+        <td>{{ order.amount | currency:"&euro;" }}</td>
+    </tr>
+</table>
+
+
+</div>
+<paginate ng-change="VM.changePage(page)" ng-model="VM.pagination"></paginate>

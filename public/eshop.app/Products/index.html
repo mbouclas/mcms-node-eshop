@@ -1,0 +1,47 @@
+<h1>{{ VM.itemCount }} products found</h1>
+<table class="table">
+    <tr>
+        <th>SKU</th>
+        <th>Title</th>
+        <th>Categories</th>
+        <th>Dated added</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <th><form-filter ng-model="VM.filters.sku.value" type="text" model="VM.filters.sku"
+                         class="form-control" ng-change="VM.filterItems()"></form-filter></th>
+        <th><form-filter ng-model="VM.filters.title.value" type="text" model="VM.filters.title"
+                         class="form-control" ng-change="VM.filterItems()"></form-filter>
+        </th>
+        <th>
+            <recursive-select ng-model="VM.filters.categories.value"
+                              settings="{label:'category',value:'id',defaultOption:'Select one'}" tree="VM.categories"
+                              ng-change="VM.filterItems()"
+                              class="form-control"></recursive-select>
+        </th>
+        <th></th>
+        <th><select-box ng-model="VM.filters.active.value" class="form-control" ng-change="VM.filterItems()">
+            <option value="">Select one</option>
+        </select-box></th>
+    </tr>
+    <tr ng-repeat="product in VM.products">
+        <td>
+            <a href="#/product/edit/{{ product._id }}" ng-bind="product.sku"></a>
+        </td>
+        <td>
+            <a href="#/product/edit/{{ product._id }}" ng-bind-html="product.title"></a>
+        </td>
+        <td>
+            <span ng-repeat="category in product.categories">
+                <a href="" ng-click="VM.applyFilter(category)"  ng-bind-html="category.category"></a>
+            </span>
+        </td>
+        <td>{{ product.created_at | moment }}</td>
+        <td>
+            <span class="label label-sm label-success" ng-if="product.active">Yes</span>
+            <span class="label label-sm label-danger" ng-if="!product.active">No</span>
+        </td>
+    </tr>
+</table>
+
+<paginate ng-change="VM.changePage(page)" ng-model="VM.pagination"></paginate>

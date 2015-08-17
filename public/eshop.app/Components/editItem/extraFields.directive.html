@@ -1,0 +1,15 @@
+<div class="form-group" ng-repeat="field in VM.ExtraFields">
+    <label for="{{ field._id }}">{{ field.title }}</label>
+    <input type="text" class="form-control" name="{{ field.varName }}" id="{{ field._id }}"
+           placeholder="{{ field.title }}" ng-model="VM.extraFieldValue(field._id).value" ng-if="field.type=='text'">
+
+    <select ng-if="field.type=='multiselect' || field.type=='select'" name="{{ field.varName }}" id="{{ field._id }}"
+            class="form-control"
+            ng-options="f.varName as f.title for f in field.fieldOptions"
+            ng-model="VM.extraFieldValue(field._id).value">
+        <option value="">Select one</option>
+    </select>
+
+    <textarea type="text" class="form-control" name="{{ field.varName }}" id="{{ field._id }}"
+           placeholder="{{ field.title }}" ng-model="VM.extraFieldValue(field._id).value" ng-if="field.type=='textarea'"></textarea>
+</div>

@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square"></i> General info
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="title" ng-model="VM.Product.title"
+                           to-slug="VM.Product.permalink">
+                </div>
+
+                <div class="form-group">
+                    <label for="permalink">Permalink</label>
+                    <input type="text" class="form-control" name="permalink" id="permalink"
+                           placeholder="permalink" ng-model="VM.Product.permalink">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <recursive-select ng-model="VM.Product.category"
+                                      settings="{label:'category',value:'id',defaultOption:'Select one'}" tree="VM.categories"
+                                      ng-change="VM.categoriesChange(item)"
+                                      class="form-control"></recursive-select>
+                    <div class="spacer">
+                        <ul class="list-unstyled list-inline">
+                            <li ng-repeat="category in VM.Product.categories">
+                                <a href="" class="btn btn-default"
+                                   ng-click="VM.removeCategoryFromModel(category)">{{ category.category }} <i class="fa fa-trash"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea ng-model="VM.Product.description" redactor="{{ VM.redactorConfig }}" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Description long</label>
+                    <textarea ng-model="VM.Product.description_long" redactor="{{ VM.redactorConfig }}" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- END LEFT -->
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square"></i> Publishing info
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select-box ng-model="VM.Product.active" class="form-control"></select-box>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="permalink">SKU</label>
+                    <input type="text" class="form-control" name="sku" id="sku"
+                           placeholder="sku" ng-model="VM.Product.sku">
+                </div>
+
+                <div class="form-group">
+                    <label for="permalink">Price</label>
+                    <input type="text" class="form-control" name="price" id="price"
+                           placeholder="price" ng-model="VM.Product.eshop.price">
+                </div>
+
+                <div class="form-group">
+                    <label for="permalink">List Price</label>
+                    <input type="text" class="form-control" name="list_price" id="list_price"
+                           placeholder="List Price" ng-model="VM.Product.eshop.list_price">
+                </div>
+
+                <div class="form-group">
+                    <label for="permalink">Quantity</label>
+                    <input type="text" class="form-control" name="quantity" id="quantity"
+                           placeholder="Quantity" ng-model="VM.Product.eshop.quantity">
+                </div>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square"></i> Main image
+            </div>
+            <div class="panel-body">
+                <img ng-src="{{ VM.Product.thumb.copies.big_thumb.imageUrl || '/assets/img/no-image.png' }}" class="img-responsive" />
+                <upload-box
+                        ng-model="VM.Product.thumb" config="VM.uploadConfig"
+                        ng-if="VM.Product.id" callback="VM.onUploadDone(file,response)"
+                        auto-start="true" progress-bar="true"
+                        accept-select="{{ VM.uploadOptions.acceptSelect }}"
+                        accept="{{ VM.uploadOptions.accept }}"></upload-box>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square"></i> Settings
+            </div>
+            <div class="panel-body">
+                sdsd
+            </div>
+        </div>
+    </div><!-- END RIGHT -->
+</div>

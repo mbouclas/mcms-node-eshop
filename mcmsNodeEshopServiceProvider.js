@@ -94,7 +94,10 @@ module.exports = (function(App){
 
         },2000);
 
+        App.Controllers[this.packageName] = App.Helpers.services.loadService(__dirname + '/Controllers',true,this);
         miniApp.use(expressCart);
+        miniApp.use(express.static(__dirname + '/public'));
+        App.viewEngine.registerTemplates(this.viewsDir, miniApp);
         require('./routes')(App, miniApp,this);
         require('./Events/loader')(App, miniApp,this);
         miniApp.on('mount', function (parent) {

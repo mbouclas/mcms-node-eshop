@@ -8,7 +8,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
     function notifyAdmin(Order,callback){
         var Notification = {
-            mailTemplate : selectEmailTemplate(),
+            mailTemplate : selectEmailTemplate(Order.status),
             to : {
                 email : App.Config.mail.admin.email,
                 name : App.Config.mail.admin.name
