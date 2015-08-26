@@ -66,16 +66,21 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 //mind fuck intensifies....
                 returnObj.items.forEach(function(product){
                     var found = lo.find(final,{baseSku : product.baseSku});
+
                     if (found){
                         product.relatedSkus = {count : found.count,items : found.items};
                         var me = lo.find(product.relatedSkus.items,{sku : product.sku});
+                        var temp = lo.clone(product.relatedSkus.items);
                         if (me){//remove my self from the counts
-                            product.relatedSkus.items.splice(product.relatedSkus.items.indexOf(me),1);
+                            temp.splice(temp.indexOf(me),1);//we need to remove from a clone so that we will not affect the rest of the results
+                            product.relatedSkus.items = temp;
                             product.relatedSkus.count = product.relatedSkus.items.length;//update counts
                         }
                     }
                 });
+
                 callback(null,returnObj);
+                returnObj = null;
             });
         });
     }

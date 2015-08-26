@@ -12,15 +12,22 @@
                 type : 'equals'
             },
             sku : {
-                type : 'like'
+                type : 'like',
+                placeholder : 'sku',
+                model : 'sku',
+                fieldType : 'text'
             },
             title : {
-                type : 'like'
+                type : 'like',
+                placeholder : 'Title',
+                model : 'title',
+                fieldType : 'text'
             },
             categories: {
                 type : 'in'
             }
         };
+
 
         changePage().then(function(){
             vm.categories = eshopService.Categories;

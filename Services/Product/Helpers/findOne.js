@@ -57,6 +57,13 @@ module.exports = (function(App,Connection,Package,privateMethods){
     function getProduct(args,options,callback){
         var query,
             searchBy = (typeof args == 'string') ? {_id : App.Helpers.MongoDB.idToObjId(args)} : args;
+        if (Options.active){
+            searchBy.active = Options.active;
+        }
+
+        if (Options.quantity){
+            searchBy['eshop.quantity'] = Options.quantity;
+        }
 
         if (typeof args == 'string'){
             query = Model.findById(args);
@@ -78,7 +85,8 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 Package.services.Discount.applyDiscount(product);
             }
 
-            return callback(null,product);
+            callback(null,product);
+            product = null;
         });
     }
 

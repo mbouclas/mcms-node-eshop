@@ -18,7 +18,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
         ];
 
         async.waterfall(asyncArr,function(err,result){
-            App.Event.emit('cache.reset.object',Package.packageName,id);
+            App.Event.emit('cache.reset.object','products',id);
             callback(err,result);
         });
 

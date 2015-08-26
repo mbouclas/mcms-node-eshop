@@ -13,7 +13,8 @@ module.exports = (function(App,Connection,Package,privateMethods){
             if (err) {
                 return callback(err);
             }
-            App.Event.emit('cache.reset.object',Package.packageName,id);
+
+            App.Event.emit('cache.reset.object','products',id);
             callback(null, true);
         });
 

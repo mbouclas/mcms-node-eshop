@@ -9,8 +9,8 @@
     </tr>
     <tr>
         <th><form-filter ng-model="VM.filters.sku.value" type="text" model="VM.filters.sku"
-                         class="form-control" ng-change="VM.filterItems()"></form-filter></th>
-        <th><form-filter ng-model="VM.filters.title.value" type="text" model="VM.filters.title"
+                         class="form-control" ng-change="VM.filterItems()" placeholder="SKU"></form-filter></th>
+        <th><form-filter ng-model="VM.filters.title.value" type="text" model="VM.filters.title" placeholder="Title"
                          class="form-control" ng-change="VM.filterItems()"></form-filter>
         </th>
         <th>
@@ -24,6 +24,7 @@
             <option value="">Select one</option>
         </select-box></th>
     </tr>
+
     <tr ng-repeat="product in VM.products">
         <td>
             <a href="#/product/edit/{{ product._id }}" ng-bind="product.sku"></a>

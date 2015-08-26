@@ -45,6 +45,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 return callback(err);
             }
             callback(null,returnObj);
+            returnObj = null;
         });
     }
 
