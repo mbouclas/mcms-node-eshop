@@ -1,0 +1,453 @@
+{
+  "payment_methods": [
+    {
+      "id": "14",
+      "alias": "paypal",
+      "title": "Paypal",
+      "description": "<p>????? ???? ????????????<br>\nEUROBANK  0026-0180-9101-000-86121\n<br> \n????????   5026-019619-661\n <br> \nALPHA  104-002101-259820\n <br> \n??????  129-59199675</p>",
+      "orderby": "0",
+      "active": "1",
+      "surcharge": "0.00",
+      "surcharge_type": "$",
+      "settings": {
+        "accid": "5x6x6",
+        "accname": "paypal",
+        "apikey": "12345678909876543210",
+        "key": "12345678909876543210",
+        "authkey": "12345678909876543210",
+        "email": "email@mcms.com",
+        "uname": "mcms",
+        "pass": "mcms12345",
+        "sucurl": "http://cms/ajax/eshop.php?success",
+        "failurl": "http://cms/ajax/eshop.php?failure",
+        "cburl": "http://cms/ajax/eshop.php?callback",
+        "extra": "{}",
+        "payment_processor": "",
+        "template": "/skin/modules/eshop/paypal.html",
+        "statusCodes": {
+          "success": [
+            "Completed"
+          ],
+          "fail": [
+            "Canceled_Reversal",
+            "Denied",
+            "Expired",
+            "Failed"
+          ],
+          "other": [
+            "In-Progress",
+            "Partially_Refunded",
+            "Pending",
+            "Processed",
+            "Refunded",
+            "Reversed",
+            "Voided"
+          ]
+        },
+        "processor": {
+          "accID": "4",
+          "passwd": "sd",
+          "email": "info@get-a-bag.com",
+          "business": "MDYA9JC9VKP9U",
+          "currency_code": "EUR"
+        }
+      },
+      "date_added": "0",
+      "shipping_methods": [
+        "153",
+        "154"
+      ],
+      "processor": "5",
+      "availabeLanguages": [
+        {
+          "code": "gr",
+          "charset": "iso-8859-7",
+          "active": "Y",
+          "country": "Greek",
+          "locale": "Greek",
+          "logo": "/product_images/custom/logo_gr.jpg",
+          "image": "/images/flags/el.png",
+          "alias": "????????",
+          "settings": "",
+          "item": []
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "alias": "bank",
+      "title": "Bank transfer",
+      "description": "<p>Bank name: <strong>UsbBank</strong><br>IBAN: <strong>CY98011000211422011306112016</strong><br>SWIFT Code(BIC): <strong>UNVKCY2N</strong></p>",
+      "orderby": "1",
+      "active": "0",
+      "surcharge": "5.00",
+      "surcharge_type": "%",
+      "settings": {
+        "accid": "5x6x6",
+        "accname": "cc",
+        "apikey": "12345678909876543210",
+        "key": "12345678909876543210",
+        "authkey": "12345678909876543210",
+        "email": "email@mcms.com",
+        "uname": "mcms",
+        "pass": "mcms12345",
+        "sucurl": "/:lang/userCP/index.html#?action=viewOrder&orderID=:orderID",
+        "failurl": "/order/failure.html",
+        "cburl": "/order/canceled.html",
+        "notifyOnProcessed": "true",
+        "processor": {
+          "showBankDetails": "true"
+        },
+        "payment_processor": "ticketing.php"
+      },
+      "date_added": "",
+      "shipping_methods": [
+        "153"
+      ],
+      "processor": "9",
+      "availabeLanguages": [
+        {
+          "code": "gr",
+          "charset": "iso-8859-7",
+          "active": "Y",
+          "country": "Greek",
+          "locale": "Greek",
+          "logo": "/product_images/custom/logo_gr.jpg",
+          "image": "/images/flags/el.png",
+          "alias": "????????",
+          "settings": "",
+          "item": []
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "alias": "door",
+      "title": "Pay on delivery",
+      "description": "<p>Your order will arrive at your door via courier.&nbsp;</p>",
+      "orderby": "2",
+      "active": "1",
+      "surcharge": "0.00",
+      "surcharge_type": "%",
+      "settings": {
+        "accid": "5x6x6",
+        "direct": "mcmseshop",
+        "apikey": "12345678909876543210",
+        "key": "12345678909876543210",
+        "authkey": "12345678909876543210",
+        "email": "email@mcms.com",
+        "uname": "mcms",
+        "pass": "mcms12345",
+        "sucurl": "/:lang/userCP/index.html#?action=viewOrder&orderID=:orderID",
+        "failurl": "http://cms/ajax/eshop.php?failure",
+        "cburl": "http://cms/ajax/eshop.php?callback",
+        "extra": "{}",
+        "notifyOnProcessed": "true",
+        "payment_processor": ""
+      },
+      "date_added": "",
+      "shipping_methods": [
+        "154"
+      ],
+      "processor": "8",
+      "availabeLanguages": [
+        {
+          "code": "gr",
+          "charset": "iso-8859-7",
+          "active": "Y",
+          "country": "Greek",
+          "locale": "Greek",
+          "logo": "/product_images/custom/logo_gr.jpg",
+          "image": "/images/flags/el.png",
+          "alias": "????????",
+          "settings": "",
+          "item": []
+        }
+      ]
+    }
+  ],
+  "processors": [
+    {
+      "id": "5",
+      "title": "paypal",
+      "file": "paypal.php",
+      "settings": "",
+      "date_added": "",
+      "required_fields": [
+        {
+          "var_name": "business",
+          "title": "Account ID",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "currency_code",
+          "title": "currency Code",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "email",
+          "title": "email",
+          "type": "text"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "id": "6",
+      "title": "proxyPay 3",
+      "file": "proxypay.php",
+      "settings": null,
+      "date_added": "",
+      "required_fields": [
+        {
+          "var_name": "accID",
+          "title": "Account ID",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "passwd",
+          "title": "Password",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "email",
+          "title": "email",
+          "type": "text"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "id": "7",
+      "title": "Piraeus Bank",
+      "file": "",
+      "settings": {
+        "Username": "HP685909",
+        "Password": "PK362583",
+        "MerchantId": "140266503",
+        "PosId": "81266500",
+        "AcquirerId": "14",
+        "MerchantReference": "test",
+        "RequestType": "02",
+        "ExpirePreauth": "0",
+        "Amount": "0.01",
+        "CurrencyCode": "978",
+        "Installments": "0",
+        "Bnpl": "0",
+        "Parameters": ""
+      },
+      "date_added": "",
+      "required_fields": [
+        {
+          "var_name": "Username",
+          "title": "Account Username",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "Password",
+          "title": "Password",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "MerchantId",
+          "title": "MerchantId",
+          "type": "text"
+        },
+        {
+          "var_name": "PosId",
+          "title": "PosId",
+          "type": "text"
+        },
+        {
+          "var_name": "AcquirerId",
+          "title": "AcquirerId",
+          "type": "text"
+        },
+        {
+          "var_name": "MerchantReference",
+          "title": "MerchantReference",
+          "type": "text"
+        },
+        {
+          "var_name": "RequestType",
+          "title": "RequestType",
+          "type": "text"
+        },
+        {
+          "var_name": "ExpirePreauth",
+          "title": "ExpirePreauth",
+          "type": "text"
+        },
+        {
+          "var_name": "CurrencyCode",
+          "title": "CurrencyCode",
+          "type": "text"
+        },
+        {
+          "var_name": "Installments",
+          "title": "Installments",
+          "type": "text"
+        },
+        {
+          "var_name": "Bnpl",
+          "title": "Bnpl",
+          "type": "text"
+        },
+        {
+          "var_name": "Parameters",
+          "title": "Parameters",
+          "type": "text"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "id": "8",
+      "title": "Cash on delivery",
+      "file": "",
+      "settings": null,
+      "date_added": "",
+      "required_fields": [
+        {
+          "var_name": "accID",
+          "title": "Account ID",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "passwd",
+          "title": "Password",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "email",
+          "title": "email",
+          "type": "text"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "id": "9",
+      "title": "Bank transfer",
+      "file": "",
+      "settings": null,
+      "date_added": "",
+      "required_fields": [
+        {
+          "var_name": "accID",
+          "title": "Account ID",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "passwd",
+          "title": "Password",
+          "type": "text",
+          "required": "false"
+        },
+        {
+          "var_name": "email",
+          "title": "email",
+          "type": "text"
+        }
+      ],
+      "url": ""
+    }
+  ],
+  "shipping": [
+    {
+      "id": "153",
+      "shipping": "get-a-bag.com courier service",
+      "shipping_time": "7 days",
+      "destination": "I",
+      "code": "1",
+      "parent": "0",
+      "orderby": "1",
+      "active": "1",
+      "weight_min": "0.00",
+      "weight_limit": "0.00",
+      "date_added": "1364499064",
+      "description": "",
+      "settings": {
+        "discount": {
+          "when": "70",
+          "type": "$",
+          "val": "6"
+        },
+        "trackingUrl": "http://ips.cypruspost.gov.cy/ipswebtrack/IPSWeb_item_events.asp?itemid=##TRACKING_NUMBER##"
+      },
+      "base_cost": "0.00",
+      "@parentid:=id": "153",
+      "children": "0"
+    },
+    {
+      "id": "154",
+      "shipping": "Kronos Express",
+      "shipping_time": "",
+      "destination": "L",
+      "code": "1",
+      "parent": "0",
+      "orderby": "2",
+      "active": "1",
+      "weight_min": "0.00",
+      "weight_limit": "0.00",
+      "date_added": "1332857037",
+      "description": "<p>adfafaf</p>",
+      "settings": {
+        "fields": {
+          "name": {
+            "type": "text",
+            "validation": "1",
+            "prefill": "user_name",
+            "label": "Name",
+            "var_name": "user_name"
+          },
+          "surname": {
+            "type": "text",
+            "validation": "1",
+            "prefill": "user_surname",
+            "label": "Surname",
+            "var_name": "user_surname"
+          },
+          "phone": {
+            "type": "text",
+            "validation": "1",
+            "label": "Phone",
+            "var_name": "phone"
+          },
+          "mobile": {
+            "type": "text",
+            "validation": "1",
+            "prefill": "user_mobile",
+            "label": "Mobile",
+            "var_name": "mobile"
+          }
+        }
+      },
+      "base_cost": "0.00",
+      "@parentid:=id": "154",
+      "children": "0"
+    }
+  ],
+  "availableLanguages": [
+    {
+      "code": "gr",
+      "charset": "iso-8859-7",
+      "active": "Y",
+      "country": "Greek",
+      "locale": "Greek",
+      "logo": "/product_images/custom/logo_gr.jpg",
+      "image": "/images/flags/el.png",
+      "alias": "????????",
+      "settings": ""
+    }
+  ]
+}
