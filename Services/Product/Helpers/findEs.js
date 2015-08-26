@@ -457,8 +457,6 @@ module.exports = (function(App,Connection,Package,privateMethods){
            });
         });
 
-
-
         next(null,relatedSkus);
     }
 
