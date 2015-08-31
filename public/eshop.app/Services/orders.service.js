@@ -13,7 +13,10 @@
             statusCodesById : {},
             save : save,
             all : getOrders,
-            get : getOrder
+            get : getOrder,
+            reSendInvoice : reSendInvoice,
+            changeOrderStatus : changeOrderStatus,
+            saveTrackingNumber : saveTrackingNumber
         };
 
         return ordersService;
@@ -39,6 +42,21 @@
 
         function getOrder(id){
             return dataService.Post('getOrder',{id : id})
+                .then(dataService.responseSuccess);
+        }
+
+        function reSendInvoice(id){
+            return dataService.Post('reSendInvoice',{id : id})
+                .then(dataService.responseSuccess);
+        }
+
+        function changeOrderStatus(id,status){
+            return dataService.Post('changeOrderStatus',{id : id,status : status})
+                .then(dataService.responseSuccess);
+        }
+
+        function saveTrackingNumber(id,trackingNumber){
+            return dataService.Post('saveTrackingNumber',{id : id,trackingNumber:trackingNumber})
                 .then(dataService.responseSuccess);
         }
     }

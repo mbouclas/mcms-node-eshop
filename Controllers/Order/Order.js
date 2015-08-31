@@ -11,7 +11,10 @@ module.exports = (function(App,Package){
         name : 'Order',
         nameSpace : 'Order',
         getOrders : getOrders,
-        getOrder : getOrder
+        getOrder : getOrder,
+        saveTrackingNumber : saveTrackingNumber,
+        changeOrderStatus : changeOrderStatus,
+        reSendInvoice : reSendInvoice
     };
 
 
@@ -25,7 +28,7 @@ module.exports = (function(App,Package){
         }
         App.Services['mcmsNodeEshop'].Order.find(query,{sanitizeForAjax:true,with:['payment'],filters : req.body.filters},function(err,result){
             if (err){
-                console.log(err);
+                App.Log.error(err);
             }
             result.pagination = App.Helpers.common.pagination(result.count.count,limit,page);
             return res.send(result);
@@ -34,10 +37,45 @@ module.exports = (function(App,Package){
 
     function getOrder(req,res,next){
         //var query = {user: App.Helpers.MongoDB.idToObjId(req.user.uid)};
-        var query = {_id : App.Helpers.MongoDB.idToObjId(req.body.id)};
+        var query = {orderId : req.body.id};
         App.Services['mcmsNodeEshop'].Order.findOne(query,{sanitizeForAjax:true,with:['payment']},function(err,result){
             if (err){
-                console.log(err);
+                App.Log.error(err);
+            }
+
+            return res.send(result);
+        });
+    }
+
+    function saveTrackingNumber(req,res,next){
+        var data = {
+          orderDetails : {tackingNumber : req.body.trackingNumber}
+        };
+
+        App.Services['mcmsNodeEshop'].Order.update(req.body.id,
+            App.Helpers.MongoDB.sanitizeInput(data),function(err,result){
+            if (err){
+                App.Log.error(err);
+            }
+
+            return res.send(result);
+        });
+    }
+
+    function changeOrderStatus(req,res,next){
+        App.Services['mcmsNodeEshop'].Order.changeOrderStatus(req.body.id,req.body.status,function(err,result){
+            if (err){
+                App.Log.error(err);
+            }
+
+            return res.send(result);
+        });
+    }
+
+    function reSendInvoice(req,res,next){
+        App.Services['mcmsNodeEshop'].Order.reSendInvoice(req.body.id,function(err,result){
+            if (err){
+                App.Log.error(err);
             }
 
             return res.send(result);

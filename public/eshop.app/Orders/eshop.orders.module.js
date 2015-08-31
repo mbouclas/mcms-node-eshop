@@ -17,7 +17,7 @@
             })
             .when('/orders/view/:id', {
                 templateUrl: configuration.appUrl + 'Orders/viewOrder.html',
-                controller: 'editProductCtrl',
+                controller: 'viewOrderCtrl',
                 controllerAs: 'VM',
                 name : 'view-order',
                 reloadOnSearch : false

@@ -19,6 +19,9 @@ module.exports = (function(App,Route,Package){
     router.post('/uploadImage' ,Controllers['Product/Product'].uploadImage);
     router.post('/getOrders' ,Controllers['Order/Order'].getOrders);
     router.post('/getOrder' ,Controllers['Order/Order'].getOrder);
+    router.post('/saveTrackingNumber' ,Controllers['Order/Order'].saveTrackingNumber);
+    router.post('/changeOrderStatus' ,Controllers['Order/Order'].changeOrderStatus);
+    router.post('/reSendInvoice' ,Controllers['Order/Order'].reSendInvoice);
 
     return router;
 });

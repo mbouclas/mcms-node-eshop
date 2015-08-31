@@ -1,0 +1,95 @@
+<div class="alert alert-success" ng-show="VM.success">{{ VM.successMessage || 'Saved...' }}</div>
+<div class="row">
+<div class="col-md-6">
+        <table cellspacing="5" cellpadding="5" border="0"  ng-cloak class="table">
+            <tbody>
+            <tr>
+                <td><strong>Order #</strong></td>
+                <td><strong class="pull-left">{{VM.Order.orderId}}</strong>
+                    <a href="" ng-click="VM.reSendInvoice()" class="btn btn-primary pull-right">re-send invoice</a> </td>
+            </tr>
+            <tr>
+                <td><strong>Amount</strong></td>
+                <td><strong>{{VM.Order.amount | currency:"&euro;"}}</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Status</strong></td>
+                <td>
+                    <select class="form-control" ng-model="VM.Order.status"
+                            ng-options="s.status as s.label for s in VM.statusCodes"
+                    ng-change="VM.changeOrderStatus()">
+                        <option value="">-- Select one --</option>
+                    </select>
+                </td></tr>
+            <tr>
+                <td><strong>Tracking #</strong></td>
+                <td>
+                    <div class="row">
+                    <div class="col-md-8">
+                    <input class="form-control" ng-model="VM.Order.orderDetails.tackingNumber">
+                    </div>
+                    <div class="col-md-4">
+                        <a href="" ng-click="VM.saveTrackingNumber()" class="btn btn-primary btn-block">Save</a>
+                    </div>
+                    </div>
+                     </td>
+            </tr>
+            <tr>
+                <td><strong>Payment method</strong></td>
+                <td>{{VM.Order.paymentMethod.title}}</td>
+            </tr>
+            <tr>
+                <td><strong>Date</strong></td>
+                <td>{{VM.Order.created_at | moment}}</td>
+            </tr>
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>{{VM.Order.orderInfo.user_name}} {{VM.Order.orderInfo.user_surname}}</td>
+            </tr>
+            <tr>
+                <td><strong>Phone</strong></td>
+                <td>{{VM.Order.orderInfo.phone}}</td>
+            </tr>
+            <tr>
+                <td><strong>Address</strong></td>
+                <td>{{VM.Order.orderInfo.street}} {{VM.Order.orderInfo.streetNo}} {{VM.Order.orderInfo.district}} {{VM.Order.orderInfo.city}}  {{VM.Order.orderInfo.postCode}}</td>
+            </tr>
+            <tr>
+                <td><strong>Comments</strong></td>
+                <td>"<em>{{VM.Order.notes}}</em>"</td>
+            </tr>
+            </tbody></table>
+
+</div><!-- END LEFT -->
+<div class="col-md-6">
+    <div class="table-responsive">
+    <table cellspacing="5" cellpadding="5" border="0" class="table">
+        <tbody><tr>
+            <th></th>
+            <th>Item #SKU </th>
+            <th>Product</th>
+            <th class="unit-price">Unit price</th>
+            <th>Qty</th>
+            <th>Total</th>
+        </tr>
+        <tr ng-repeat="item in VM.Order.items">
+            <td><img ng-src="http://get-a-bag.com{{item.thumb.thumb.imageUrl}}" /></td>
+            <td><strong>{{item.sku}}</strong></td>
+            <td><a href="/product/{{item.permalink}}" ng-bind-html="item.title"></a></td>
+            <td class="unit-price" align="center">{{item.price | currency:"&euro;"}}</td>
+            <td align="center">{{item.qty}}</td>
+            <td align="center"><span id="total-0">{{item.finalPrice | currency:"&euro;"}}</span></td>
+        </tr>
+        <tr ng-show="VM.Order.details.coupon.discount">
+            <td class="seperator"></td></tr>
+        <tr ng-show="VM.Order.details.coupon.discount_total">
+            <td align="right" colspan="5"> Discount coupon "{{VM.Order.details.coupon.title}}" : <strong class="price">-{{VM.Order.details.coupon.discount_total | currency:"&euro;"}}</strong></td></tr><tr>
+            <td class="seperator"></td></tr>
+
+        <tr>
+            <td align="right" colspan="6"> Total : <strong class="price">{{VM.Order.amount | currency:"&euro;"}}</strong></td></tr><tr>
+            <td class="seperator"></td></tr>
+        </tbody></table>
+    </div>
+</div><!-- END RIGHT -->
+</div><!-- END ROW -->
