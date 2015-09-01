@@ -4,19 +4,33 @@ module.exports = (function(App,Connection,Package,privateMethods){
         async = require('async');
 
     function update(id,data,callback){
-        var page = privateMethods.formatItem(data);
-        if (!lo.isObject(page)){
-            return callback(page);//error
+        var product = privateMethods.formatItem(data);
+        if (!lo.isObject(product)){
+            return callback(product);//error
         }
 
-        Model.update({_id : App.Helpers.MongoDB.idToObjId(id)},{$set : page},function (err) {
+        //we are not using update cause it does not fire Model setters and that is a deal breaker
+        // here as we need get/set methods for the price
+        Model.findOne({_id : App.Helpers.MongoDB.idToObjId(id)}).exec(function(err,Product){
+            lo.merge(Product,product);
+            Product.save(function(err){
+                if (err) {
+                    return callback(err);
+                }
+
+                App.Event.emit('cache.reset.object','products',id);
+                callback(null, true);
+            });
+        });
+
+/*        Model.update({_id : App.Helpers.MongoDB.idToObjId(id)},{$set : product},function (err) {
             if (err) {
                 return callback(err);
             }
 
             App.Event.emit('cache.reset.object','products',id);
             callback(null, true);
-        });
+        });*/
 
     }
 

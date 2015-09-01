@@ -1,7 +1,7 @@
 {
   "name": "mcms-node-eshop",
   "description": "Eshop module for mcms-node",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "license": "MIT",
   "author": {
     "name": "Michael Bouclas",

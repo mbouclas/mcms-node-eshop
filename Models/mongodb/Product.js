@@ -17,8 +17,8 @@ module.exports = function (mongoose, modelName) {
         extraFields : {},
         settings: {},
         eshop: {
-            price : { type: Number, index: true },
-            list_price : Number,
+            price : { type: Number, index: true, get: getPrice, set: setPrice },
+            list_price : { type: Number, get: getPrice, set: setPrice },
             quantity : Number,
             min_amount : Number,
             membership : Number,
@@ -44,6 +44,19 @@ module.exports = function (mongoose, modelName) {
         strict: false,
         id : true
     });
+    //Mongo does not handle float too well, so we need to convert everything into int
+    function getPrice(num){
+        if (num < 1){
+            return num;
+        }
+
+        return (num/100).toFixed(2);
+    }
+
+    function setPrice(num){
+        console.log(num)
+        return num*100;
+    }
 
     schema.set('toObject', { getters: true });
     schema.set('toJSON', { getters: true });

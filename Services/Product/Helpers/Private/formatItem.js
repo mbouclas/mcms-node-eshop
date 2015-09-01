@@ -40,6 +40,10 @@ module.exports = (function(App,Connection,Package){
             }
         }
 
+        if (!data.eshop){
+            data.eshop = {};
+        }
+
         var product = {
             title : data.title,
             sku : data.sku,
@@ -55,6 +59,13 @@ module.exports = (function(App,Connection,Package){
                 images : [],
                 documents : [],
                 videos : []
+            },
+            eshop : {
+                price : data.eshop.price || 0,
+                list_price : data.eshop.list_price || 0,
+                quantity : data.eshop.quantity || 0,
+                unitsSold : data.eshop.unitsSold || 0,
+                avail : data.eshop.avail || 0
             },
             thumb : data.thumb || {},
             related : [],
