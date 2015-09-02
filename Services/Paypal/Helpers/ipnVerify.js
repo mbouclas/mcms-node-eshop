@@ -6,18 +6,19 @@ var OrderService = {},
 module.exports = (function(App,Connection,Package,privateMethods){
     return function(params,sandbox,callback){
         OrderService = App.Services[Package.packageName].Order;
+        App.LogPaypal.info('incoming IPN',params);
 
         ipn.verify(params, {'allow_sandbox': sandbox || false}, function(err, msg) {
             PaypalData = params;
             if (err){
-                App.Log.error('IPN error',err);
+                App.LogPaypal.error('IPN error',err);
                 App.Event.emit('paypal.ipn.error',err,params);
                 return callback(err);
             }
 
             //check the paypal status, if not success, throw an error
             if (params.payment_status !== 'Completed'){
-                App.Log.error('IPN error','not completed');
+                App.LogPaypal.error('IPN error','not completed');
                 App.Event.emit('paypal.ipn.error','not completed',params);
                 return callback('not completed');
             }
@@ -30,8 +31,10 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
             async.waterfall(asyncArr,function(error,results){
                 if (error){
-                    console.log(error);
+                    App.LogPaypal.error('IPN error',error);
+                    return callback(error);
                 }
+                App.LogPaypal.info('IPN Success',results);
                 callback(error,results);
             });
 
