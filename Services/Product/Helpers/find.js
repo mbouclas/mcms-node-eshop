@@ -188,6 +188,9 @@ module.exports = (function(App,Connection,Package,privateMethods){
             .limit(limit)
             .sort(way + sort)
             .exec(function(err,items){
+                if (!items){
+                    items = [];
+                }
                 Aggregate = Query;
                 returnObj.items = items;
 
