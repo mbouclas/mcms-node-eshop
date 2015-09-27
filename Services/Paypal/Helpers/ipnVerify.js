@@ -58,7 +58,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
             if (err) {
                 return next(err);
             }
-            Order.status = 4;
+            Order.status = 3;
             next(null,Order);
         });
     }

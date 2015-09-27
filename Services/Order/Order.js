@@ -19,6 +19,7 @@ module.exports = (function(App,Package){
         update : require('./Helpers/update')(App,Connection,Package,privateMethods),
         applyDiscount : require('./Helpers/applyDiscount')(App,Connection,Package,privateMethods),
         notifyCustomer : require('./Helpers/notifyCustomer')(App,Connection,Package,privateMethods),
+        notifyAdmin : require('./Helpers/notifyAdmin')(App,Connection,Package,privateMethods),
         changeOrderStatus : require('./Helpers/changeOrderStatus')(App,Connection,Package,privateMethods),
         reSendInvoice : require('./Helpers/reSendInvoice')(App,Connection,Package,privateMethods)
 

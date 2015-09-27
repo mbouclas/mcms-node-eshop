@@ -2,9 +2,9 @@ module.exports = (function(App,Express,Package){
 
     App.Event.on('order.complete',function(Order){
         //Notify customer
-        Package.services.Order.notifyCustomer(Order);
+        App.Services.mcmsNodeEshop.Order.notifyCustomer(Order);
         //Notify admin
-        Package.services.Order.notifyAdmin(Order);
+        App.Services.mcmsNodeEshop.Order.notifyAdmin(Order);
         //write into analytics table
         //write into popular products table
         Order.items.forEach(function(item){
