@@ -4,7 +4,9 @@ module.exports = (function(App,Connection,Package,privateMethods){
     var Relationships = Package.modelRelationships;
     var ProductModel = Connection.models.Product,
         CategoryModel = Connection.models.ProductCategory,
-        returnObj = {},
+        returnObj = {
+            items : []
+        },
         filters = {},
         Options = {},
         Aggregate = [],
@@ -45,7 +47,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 return callback(err);
             }
             callback(null,returnObj);
-            returnObj = null;
+            returnObj = {};
         });
     }
 
