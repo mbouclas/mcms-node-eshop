@@ -123,7 +123,28 @@
 (function(){
     'use strict';
 
-    angular.module('mcms.eshop.categories',[]);
+    angular.module('mcms.eshop.categories',[])
+        .config(moduleConfig);
+
+    moduleConfig.$inject = ['$routeProvider','eshopConfiguration'];
+
+    function moduleConfig($routeProvider,configuration) {
+        $routeProvider
+            .when('/products/categories', {
+                templateUrl: configuration.appUrl + 'Categories/index.html',
+                controller: 'viewCategoriesCtrl',
+                controllerAs: 'VM',
+                name : 'view-product-categories',
+                reloadOnSearch : false
+            })
+            .when('/products/categories/edit/:id', {
+                templateUrl: configuration.appUrl + 'Categories/editCategory.html',
+                controller: 'editCategoryCtrl',
+                controllerAs: 'VM',
+                name : 'edit-product-category',
+                reloadOnSearch : false
+            });
+    }
 })();
 (function(){
     'use strict';
@@ -236,6 +257,7 @@
             init : init,
             save : save,
             getProducts : getProducts,
+            getCategories : getCategories,
             get : get
         };
 
@@ -278,6 +300,14 @@
                 page : 1
             },options);
             return dataService.Post('allProducts',options)
+                .then(dataService.responseSuccess);
+        }
+
+        function getCategories(options){
+            options = lo.merge({
+                page : 1
+            },options);
+            return dataService.Post('allCategories',options)
                 .then(dataService.responseSuccess);
         }
 
@@ -744,6 +774,67 @@
         }
 
         pageTitle.set('Products');
+
+    }
+
+})();
+(function(){
+    angular.module('mcms.eshop.categories')
+        .controller('viewCategoriesCtrl',viewCategoriesCtrl);
+
+    viewCategoriesCtrl.$inject = ['$rootScope','logger','pageTitle','eshop.productService','$timeout'];
+
+    function viewCategoriesCtrl($rootScope,logger,pageTitle,eshopService,$timeout){
+        var vm = this,
+            timer = false;
+        vm.filters = {
+            active : {
+                type : 'equals'
+            },
+            sku : {
+                type : 'like',
+                placeholder : 'sku',
+                model : 'sku',
+                fieldType : 'text'
+            },
+            title : {
+                type : 'like',
+                placeholder : 'Title',
+                model : 'title',
+                fieldType : 'text'
+            },
+            categories: {
+                type : 'in'
+            }
+        };
+
+
+        changePage().then(function(){
+            vm.categories = eshopService.Categories;
+        });
+
+        vm.filterItems = function(){
+            if (timer){
+                $timeout.cancel(timer);
+            }
+
+            timer = $timeout(function(){
+                changePage(1);//reset page
+            },500);
+        };
+
+        vm.changePage = function(page){
+            changePage(page);
+        };
+
+        function changePage(page){
+            return eshopService.getCategories({filters : vm.filters,page : page || 1 })
+                .then(function(products){
+
+                });
+        }
+
+        pageTitle.set('Categories');
 
     }
 

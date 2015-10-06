@@ -1,6 +1,7 @@
 module.exports = function (mongoose, modelName) {
     var Schema = mongoose.Schema,
-        mongoosastic = require('mongoosastic');
+        mongoosastic = require('mongoosastic'),
+        lo = require('lodash');
 
     var schema = mongoose.Schema({
         sku: { type: String, index: true },
@@ -49,12 +50,16 @@ module.exports = function (mongoose, modelName) {
         if (num < 1){
             return num;
         }
-
+        if (!lo.isNumber(num) || !num || typeof num == 'undefined' || num === 'NaN'){
+           return 0;
+        }
         return (num/100).toFixed(2);
     }
 
     function setPrice(num){
-        console.log(num)
+        if (!lo.isNumber(num) || !num || typeof num == 'undefined' || num === 'NaN'){
+            num = 0;
+        }
         return num*100;
     }
 

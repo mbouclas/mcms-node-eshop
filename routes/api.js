@@ -12,6 +12,8 @@ module.exports = (function(App,Route,Package){
     router.get('/findOne' ,Controllers['Product/Product'].findOne);
     router.post('/getProduct' ,Controllers['Product/Product'].findOne);
     router.post('/allProducts' ,Controllers['Product/Product'].find);
+    router.post('/allCategories' ,Controllers['Product/Category'].find);
+    router.post('/getCategory' ,Controllers['Product/Category'].findOne);
     router.post('/initProducts' ,Controllers['Product/Product'].init);
     router.post('/create' ,Controllers['Product/Product'].create);
     router.post('/update' ,Controllers['Product/Product'].update);

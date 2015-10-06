@@ -15,6 +15,7 @@
             init : init,
             save : save,
             getProducts : getProducts,
+            getCategories : getCategories,
             get : get
         };
 
@@ -57,6 +58,14 @@
                 page : 1
             },options);
             return dataService.Post('allProducts',options)
+                .then(dataService.responseSuccess);
+        }
+
+        function getCategories(options){
+            options = lo.merge({
+                page : 1
+            },options);
+            return dataService.Post('allCategories',options)
                 .then(dataService.responseSuccess);
         }
 
