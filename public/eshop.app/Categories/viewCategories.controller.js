@@ -2,9 +2,9 @@
     angular.module('mcms.eshop.categories')
         .controller('viewCategoriesCtrl',viewCategoriesCtrl);
 
-    viewCategoriesCtrl.$inject = ['$rootScope','logger','pageTitle','eshop.productService','$timeout'];
+    viewCategoriesCtrl.$inject = ['$rootScope','logger','pageTitle','eshop.categoriesService','$timeout'];
 
-    function viewCategoriesCtrl($rootScope,logger,pageTitle,eshopService,$timeout){
+    function viewCategoriesCtrl($rootScope,logger,pageTitle,Service,$timeout){
         var vm = this,
             timer = false;
         vm.currentCategory = {};
@@ -25,7 +25,14 @@
         };
 
         vm.onCategorySave = function(category){
-          console.log('from callback',category);
+            Service.save(category)
+                .then(function(result){
+                    vm.saved = true;
+                    $timeout(function(){
+                        vm.saved = false;
+                    },4000);
+                    //show a saved message or something
+                });
         };
 
         changePage().then(function(){
@@ -47,7 +54,7 @@
         };
 
         function changePage(page){
-            return eshopService.getCategories({filters : vm.filters,page : page || 1 })
+            return Service.getCategories({filters : vm.filters,page : page || 1 })
                 .then(function(categories){
                     vm.Categories = categories;
                 });

@@ -10,7 +10,8 @@
             templateUrl: Config.appUrl + "Components/categories/quickEditCategory.directive.html",
             scope: {
                 model : '=ngModel',
-                onSave : '&?callback'
+                onSave : '&?callback',
+                savedFlag : '=?saved'
             },
             restrict : 'E',
             link : quickEditCategoryLink

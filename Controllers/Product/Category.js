@@ -9,7 +9,9 @@ module.exports = (function(App,Package) {
         name: 'Category',
         nameSpace: 'Product',
         findOne: findOne,
-        find: find
+        find: find,
+        create : create,
+        update : update
     };
 
 
@@ -27,6 +29,27 @@ module.exports = (function(App,Package) {
     function find(req,res,next){
         categoryServices.find({permalink : packageName},function(err,categories){
             res.send(categories);
+        })
+
+    }
+
+    function create(req,res,next){
+        categoryServices.find({permalink : packageName},function(err,categories){
+            res.send(categories);
+        })
+
+    }
+
+
+    function update(req,res,next){
+        console.log(req.body);
+        if (!req.body.id){
+            return res.status(409).send({success:false, error : 'noId'});
+        }
+
+        req.body.data.uid = req.user.uid;
+        categoryServices.update(req.body.id,req.body.data,function(err,result){
+            res.send(result);
         })
 
     }

@@ -14,9 +14,11 @@ module.exports = (function(App,Route,Package){
     router.post('/allProducts' ,Controllers['Product/Product'].find);
     router.post('/allCategories' ,Controllers['Product/Category'].find);
     router.post('/getCategory' ,Controllers['Product/Category'].findOne);
+    router.post('/createCategory' ,Controllers['Product/Category'].create);
+    router.post('/updateCategory' ,Controllers['Product/Category'].update);
     router.post('/initProducts' ,Controllers['Product/Product'].init);
-    router.post('/create' ,Controllers['Product/Product'].create);
-    router.post('/update' ,Controllers['Product/Product'].update);
+    router.post('/createProduct' ,Controllers['Product/Product'].create);
+    router.post('/updateProduct' ,Controllers['Product/Product'].update);
     router.post('/uploadThumb' ,Controllers['Product/Upload'].uploadThumb);
     router.post('/uploadImage' ,Controllers['Product/Upload'].uploadImage);
     router.post('/uploadCategoryImages' ,Controllers['Product/Upload'].uploadCategoryImages);

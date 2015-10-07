@@ -30,11 +30,11 @@
     }
 
     function create(data){
-        return this.Post('create',{data: data}).then(this.responseSuccess);
+        return this.Post('createProduct',{data: data}).then(this.responseSuccess);
     }
 
     function update(id,data){
-        return this.Post('update',{id : id,data : data}).then(this.responseSuccess);
+        return this.Post('updateProduct',{id : id,data : data}).then(this.responseSuccess);
     }
 
 })();

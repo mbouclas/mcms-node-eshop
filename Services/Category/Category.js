@@ -2,7 +2,8 @@ module.exports = (function(App,Package){
     var defaultDB = App.Config.database.default,
         Connection = App.Connections[defaultDB],
         privateMethods = {
-            countItems : require('./Helpers/Private/countItems')(App,Connection,Package)
+            countItems : require('./Helpers/Private/countItems')(App,Connection,Package),
+            formatItem : require('./Helpers/Private/formatItem')(App,Connection,Package)
         };
 
 

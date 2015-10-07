@@ -232,18 +232,18 @@
     }
 
     function create(data){
-        return this.Post('create',{data: data}).then(this.responseSuccess);
+        return this.Post('createProduct',{data: data}).then(this.responseSuccess);
     }
 
     function update(id,data){
-        return this.Post('update',{id : id,data : data}).then(this.responseSuccess);
+        return this.Post('updateProduct',{id : id,data : data}).then(this.responseSuccess);
     }
 
 })();
 (function(){
     'use strict';
 
-    angular.module('mcms.eshop')
+    angular.module('mcms.eshop.product')
         .service('eshop.productService',eshopService);
 
     eshopService.$inject = ['eshop.dataService','eshopConfig','$rootScope','lodashFactory','$timeout'];
@@ -257,7 +257,6 @@
             init : init,
             save : save,
             getProducts : getProducts,
-            getCategories : getCategories,
             get : get
         };
 
@@ -300,14 +299,6 @@
                 page : 1
             },options);
             return dataService.Post('allProducts',options)
-                .then(dataService.responseSuccess);
-        }
-
-        function getCategories(options){
-            options = lo.merge({
-                page : 1
-            },options);
-            return dataService.Post('allCategories',options)
                 .then(dataService.responseSuccess);
         }
 
@@ -380,6 +371,45 @@
             return dataService.Post('saveTrackingNumber',{id : id,trackingNumber:trackingNumber})
                 .then(dataService.responseSuccess);
         }
+    }
+
+
+})();
+(function(){
+    'use strict';
+
+    angular.module('mcms.eshop.categories')
+        .service('eshop.categoriesService',CategoriesService);
+
+    CategoriesService.$inject = ['eshop.dataService','eshopConfig','$rootScope','lodashFactory','$timeout'];
+
+    function CategoriesService(dataService,Config,$rootScope,lo){
+        var Service = {
+            loaded : false,
+            getCategories : getCategories,
+            save : saveCategory
+        };
+
+        return Service;
+
+        function saveCategory(data){
+            if (!data.id){
+                return dataService.Post('createCategory',data)
+                    .then(function (res) {
+                    });
+            }
+
+            return dataService.Post('updateCategory',{id : data._id,data : data});
+        }
+
+        function getCategories(options){
+            options = lo.merge({
+                page : 1
+            },options);
+            return dataService.Post('allCategories',options)
+                .then(dataService.responseSuccess);
+        }
+
     }
 
 
@@ -782,9 +812,9 @@
     angular.module('mcms.eshop.categories')
         .controller('viewCategoriesCtrl',viewCategoriesCtrl);
 
-    viewCategoriesCtrl.$inject = ['$rootScope','logger','pageTitle','eshop.productService','$timeout'];
+    viewCategoriesCtrl.$inject = ['$rootScope','logger','pageTitle','eshop.categoriesService','$timeout'];
 
-    function viewCategoriesCtrl($rootScope,logger,pageTitle,eshopService,$timeout){
+    function viewCategoriesCtrl($rootScope,logger,pageTitle,Service,$timeout){
         var vm = this,
             timer = false;
         vm.currentCategory = {};
@@ -805,7 +835,14 @@
         };
 
         vm.onCategorySave = function(category){
-          console.log('from callback',category);
+            Service.save(category)
+                .then(function(result){
+                    vm.saved = true;
+                    $timeout(function(){
+                        vm.saved = false;
+                    },4000);
+                    //show a saved message or something
+                });
         };
 
         changePage().then(function(){
@@ -827,7 +864,7 @@
         };
 
         function changePage(page){
-            return eshopService.getCategories({filters : vm.filters,page : page || 1 })
+            return Service.getCategories({filters : vm.filters,page : page || 1 })
                 .then(function(categories){
                     vm.Categories = categories;
                 });
@@ -971,7 +1008,8 @@
             templateUrl: Config.appUrl + "Components/categories/quickEditCategory.directive.html",
             scope: {
                 model : '=ngModel',
-                onSave : '&?callback'
+                onSave : '&?callback',
+                savedFlag : '=?saved'
             },
             restrict : 'E',
             link : quickEditCategoryLink
