@@ -7,30 +7,29 @@
     function viewCategoriesCtrl($rootScope,logger,pageTitle,eshopService,$timeout){
         var vm = this,
             timer = false;
+        vm.currentCategory = {};
         vm.filters = {
             active : {
                 type : 'equals'
             },
-            sku : {
-                type : 'like',
-                placeholder : 'sku',
-                model : 'sku',
-                fieldType : 'text'
-            },
-            title : {
+            category : {
                 type : 'like',
                 placeholder : 'Title',
                 model : 'title',
                 fieldType : 'text'
-            },
-            categories: {
-                type : 'in'
             }
         };
 
+        vm.setCurrentCategory = function(category){
+          vm.currentCategory = category;
+        };
+
+        vm.onCategorySave = function(category){
+          console.log('from callback',category);
+        };
 
         changePage().then(function(){
-            vm.categories = eshopService.Categories;
+
         });
 
         vm.filterItems = function(){
@@ -50,12 +49,11 @@
         function changePage(page){
             return eshopService.getCategories({filters : vm.filters,page : page || 1 })
                 .then(function(categories){
-                    console.log(categories)
+                    vm.Categories = categories;
                 });
         }
 
         pageTitle.set('Categories');
-
     }
 
 })();

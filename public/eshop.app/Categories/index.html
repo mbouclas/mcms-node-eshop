@@ -1,1 +1,41 @@
-Categories
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Dated added</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th><form-filter ng-model="VM.filters.category.value" type="text" model="VM.filters.category" placeholder="Title"
+                         class="form-control" ng-change="VM.filterItems()"></form-filter>
+        </th>
+        <th></th>
+        <th><select-box ng-model="VM.filters.active.value" class="form-control" ng-change="VM.filterItems()">
+            <option value="">Select one</option>
+        </select-box></th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="category in VM.Categories">
+        <td>
+            <a href="#/products/categories/edit/{{ category._id }}" ng-bind-html="category.category"></a>
+        </td>
+        <td>{{ category.created_at | moment }}</td>
+        <td>
+            <span class="label label-sm label-success" ng-if="category.active">Yes</span>
+            <span class="label label-sm label-danger" ng-if="!category.active">No</span>
+        </td>
+        <td>
+            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                <a title="Edit" data-placement="top" class="btn btn-xs btn-teal tooltips"
+                   ng-click="VM.setCurrentCategory(category)"
+                   href="" data-target="#quickEditCategory" data-toggle="modal"><i
+                        class="fa fa-edit"></i></a>
+                <a title="Remove" data-placement="top" class="btn btn-xs btn-bricky tooltips" href=""><i
+                        class="fa fa-times fa fa-white"></i></a>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<quick-edit-category ng-model="VM.currentCategory" callback="VM.onCategorySave(category)"></quick-edit-category>

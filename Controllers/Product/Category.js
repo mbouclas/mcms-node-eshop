@@ -25,7 +25,7 @@ module.exports = (function(App,Package) {
     }
 
     function find(req,res,next){
-        categoryServices.find(packageName,function(err,categories){
+        categoryServices.find({permalink : packageName},function(err,categories){
             res.send(categories);
         })
 

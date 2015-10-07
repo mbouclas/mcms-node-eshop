@@ -17,8 +17,10 @@ module.exports = (function(App,Route,Package){
     router.post('/initProducts' ,Controllers['Product/Product'].init);
     router.post('/create' ,Controllers['Product/Product'].create);
     router.post('/update' ,Controllers['Product/Product'].update);
-    router.post('/uploadThumb' ,Controllers['Product/Product'].uploadThumb);
-    router.post('/uploadImage' ,Controllers['Product/Product'].uploadImage);
+    router.post('/uploadThumb' ,Controllers['Product/Upload'].uploadThumb);
+    router.post('/uploadImage' ,Controllers['Product/Upload'].uploadImage);
+    router.post('/uploadCategoryImages' ,Controllers['Product/Upload'].uploadCategoryImages);
+    router.post('/uploadProductImages' ,Controllers['Product/Upload'].uploadProductImages);
     router.post('/getOrders' ,Controllers['Order/Order'].getOrders);
     router.post('/getOrder' ,Controllers['Order/Order'].getOrder);
     router.post('/saveTrackingNumber' ,Controllers['Order/Order'].saveTrackingNumber);

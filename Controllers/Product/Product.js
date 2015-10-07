@@ -14,9 +14,7 @@ module.exports = (function(App,Package){
         find : find,
         init : init,
         create : create,
-        update : update,
-        uploadThumb : uploadThumb,
-        uploadImage : uploadImage
+        update : update
     };
 
     function init(req,res,next){
@@ -100,25 +98,5 @@ module.exports = (function(App,Package){
         });
     }
 
-    function uploadThumb(req,res,next){
-        productServices.thumb(req.body.id,req.files.uploadedFile,function(err,result){
-            if (err){
-                return res.status(409).send({success:false, error : err});
-            }
 
-            res.send(result);
-        });
-
-    }
-
-    function uploadImage(req,res,next){
-        productServices.image(req.body.id,req.files.uploadedFile,function(err,result){
-            if (err){
-                return res.status(409).send({success:false, error : err});
-            }
-
-            res.send(result);
-        });
-
-    }
 });
