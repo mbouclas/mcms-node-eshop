@@ -38,7 +38,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
             searchBy = (typeof args == 'string') ? {_id : App.Helpers.MongoDB.idToObjId(args)} : args,
             ret = (!args.typeOfTree) ? 'getChildren' : args.typeOfTree,
             filters = {
-                sort: { orderby: 1 }
+                sort: { orderBy: 1 }
             };
 
         if (typeof args == 'string'){

@@ -9,15 +9,29 @@
     function CategoriesService(dataService,Config,$rootScope,lo){
         var Service = {
             loaded : false,
+            newCategory : newCategory,
             getCategories : getCategories,
             save : saveCategory
         };
 
         return Service;
 
+        function newCategory(){
+            return lo.clone({
+                category: '',
+                permalink: '',
+                orderby: 0,
+                settings: {},
+                ExtraFields: [],
+                active : false,
+                thumb : {},
+                uid : {}
+            });
+        }
+
         function saveCategory(data){
             if (!data.id){
-                return dataService.Post('createCategory',data)
+                return dataService.Post('createCategory',{data : data})
                     .then(function (res) {
                     });
             }

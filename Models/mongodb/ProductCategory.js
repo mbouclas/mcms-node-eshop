@@ -5,11 +5,13 @@ module.exports = function (mongoose, modelName) {
         category: { type: String, index: true },
         description: String,
         permalink: { type: String, index: true },
-        orderby: Number,
+        orderBy: Number,
         created_at: {type : Date, default : Date.now},
         updated_at: {type : Date, default : Date.now},
         ExtraFields : [],
         settings : {},
+        uid: {},
+        active: Boolean,
         oldID : Number
     }, {
         strict: false,

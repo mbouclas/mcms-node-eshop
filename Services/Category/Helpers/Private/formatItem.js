@@ -10,6 +10,7 @@ module.exports = (function(App,Connection,Package){
             description : data.description || '',
             description_long : data.description_long || '',
             active : data.active || false,
+            orderBy : data.orderBy || false,
             uid : App.Helpers.MongoDB.idToObjId(data.uid),
             thumb : data.thumb || {},
             settings : data.settings || {}

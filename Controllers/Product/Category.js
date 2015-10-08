@@ -1,5 +1,5 @@
 module.exports = (function(App,Package) {
-    var packageName = Package.name,
+    var packageName = 'mcmsNodeEshop',
         categoryServices = App.Services['mcmsNodeEshop'].Category,
         async = require('async'),
         Cache = {};
@@ -34,15 +34,20 @@ module.exports = (function(App,Package) {
     }
 
     function create(req,res,next){
-        categoryServices.find({permalink : packageName},function(err,categories){
-            res.send(categories);
-        })
+        req.body.data.uid = req.user.uid;
+        var parent = (req.body.parent) ? req.body.parent : 'mcmsNodeEshop';//expecting permalink
+        categoryServices.create(parent,req.body.data,function(err,result){
+            if (err){
+                return res.status(409).send({success:false, error : err});
+            }
 
+            res.send(result);
+        });
     }
 
 
     function update(req,res,next){
-        console.log(req.body);
+
         if (!req.body.id){
             return res.status(409).send({success:false, error : 'noId'});
         }
