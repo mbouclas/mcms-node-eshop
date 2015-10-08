@@ -44,11 +44,11 @@
                             parent.children.push(result);//just push it to the parent
                             lo.sortBy(parent.children,'orderBy');//resort
                         }
-                        //now repopulate the categories for the product module
-                        Product.setCategories(vm.Categories);
                     }
 
                     vm.saved = true;
+                    //now repopulate the categories for the product module
+                    Product.setCategories(vm.Categories);
                     $timeout(function () {
                         vm.saved = false;
                     }, 4000);
