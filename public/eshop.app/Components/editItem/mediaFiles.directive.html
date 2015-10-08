@@ -21,6 +21,7 @@
     </div><!-- END TAB -->
 
     <div id="images" class="tab-pane ">
+
         <upload-box
                 ng-model="VM.Product.mediaFiles.images" config="VM.uploadConfigMulti"
                 ng-if="VM.Product.id" callback="VM.onUploadMultiDone(file,response)"
