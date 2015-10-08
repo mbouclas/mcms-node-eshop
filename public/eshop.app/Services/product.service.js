@@ -15,6 +15,7 @@
             init : init,
             save : save,
             getProducts : getProducts,
+            setCategories : setCategories,
             get : get
         };
 
@@ -40,6 +41,10 @@
                 _this.loading = false;
                 return res;
             });
+        }
+
+        function setCategories(newCategories){
+            this.Categories = newCategories;
         }
 
         function save(data){

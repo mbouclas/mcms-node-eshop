@@ -2,9 +2,9 @@
     angular.module('mcms.eshop.categories')
         .controller('viewCategoriesCtrl', viewCategoriesCtrl);
 
-    viewCategoriesCtrl.$inject = ['$rootScope', 'logger', 'pageTitle', 'eshop.categoriesService', '$timeout'];
+    viewCategoriesCtrl.$inject = ['$rootScope', 'logger', 'pageTitle', 'eshop.categoriesService', '$timeout','eshop.productService'];
 
-    function viewCategoriesCtrl($rootScope, logger, pageTitle, Service, $timeout) {
+    function viewCategoriesCtrl($rootScope, logger, pageTitle, Service, $timeout,Product) {
         var vm = this,
             timer = false;
         vm.currentCategory = {};
@@ -44,6 +44,8 @@
                             parent.children.push(result);//just push it to the parent
                             lo.sortBy(parent.children,'orderBy');//resort
                         }
+                        //now repopulate the categories for the product module
+                        Product.setCategories(vm.Categories);
                     }
 
                     vm.saved = true;

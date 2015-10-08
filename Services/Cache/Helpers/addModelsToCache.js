@@ -48,7 +48,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
 
     function productCategories(next){
         App.Connections.mongodb.models.ProductCategory.find().lean().exec(function(err,result){
-            addToCache('ProductCategories','permalink',err,result);
+            privateMethods.addToCache('ProductCategories','permalink',err,result);
             next(null,'categories done');
         });
     }

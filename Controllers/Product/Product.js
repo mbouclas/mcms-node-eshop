@@ -1,5 +1,5 @@
 module.exports = (function(App,Package){
-    var packageName = Package.name,
+    var packageName = 'mcmsNodeEshop',
         productServices = App.Services['mcmsNodeEshop'].Product,
         categoryServices = App.Services['mcmsNodeEshop'].Category,
         ExtraField = App.Connections.mongodb.models.ExtraField,
@@ -20,7 +20,7 @@ module.exports = (function(App,Package){
     function init(req,res,next){
         var asyncObj = {
             categories: function (next) {
-                categoryServices.find({permalink: Package.name}, next);
+                categoryServices.find({permalink: packageName}, next);
             },
             ExtraFields: function (next) {
                 ExtraField.find().exec(next);

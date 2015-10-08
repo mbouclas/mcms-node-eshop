@@ -13,13 +13,14 @@ module.exports = (function(App,Connection,Package,privateMethods){
         // here as we need get/set methods for the price
         Model.findOne({_id : App.Helpers.MongoDB.idToObjId(id)}).exec(function(err,Category){
             lo.merge(Category,category);
-            Category.save(function(err){
+
+            Category.save(function(err,doc){
                 if (err) {
                     return callback(err);
                 }
 
-                App.Event.emit('cache.reset.object','categories',id);
-                callback(null, true);
+                App.Event.emit('cache.replace.object','ProductCategories','permalink',data.permalink,doc);
+                callback(null, doc);
             });
         });
 
