@@ -28,7 +28,7 @@
     function mediaFilesController(Product,$scope,$rootScope,Config,$timeout,BaseConfig,lo){
         var vm = this;
 
-
+        $rootScope.$broadcast('module.loaded','productMediaFiles');
         $rootScope.$on('product.loaded',function(event,product){
             vm.Product = product;
             vm.uploadConfig = {

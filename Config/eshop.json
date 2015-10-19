@@ -14,5 +14,13 @@
     "sortWay" : "asc",
     "priceRangeSteps" : 5,
     "priceRangeInterval" : 50
-  }
+  },
+  "frontPage" : {
+    "resultsPerPage" : 12,
+    "sortBy" : "updated_at",
+    "sortWay" : "desc",
+    "priceRangeSteps" : 5,
+    "priceRangeInterval" : 50
+  },
+  "convertPricesToInt" : true
 }

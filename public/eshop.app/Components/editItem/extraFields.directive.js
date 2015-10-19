@@ -24,6 +24,7 @@
     }
 
     function extraFieldsController(Product,$scope,$rootScope,Config,$timeout,BaseConfig,lo){
+        $rootScope.$broadcast('module.loaded','productMediaFiles');
         var vm = this;
         vm.Product = {};
         vm.ExtraFields = Product.ExtraFields;

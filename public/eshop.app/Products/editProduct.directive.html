@@ -1,8 +1,9 @@
 <form method="POST" role="form" ng-submit="VM.saveProduct()" name="pageForm">
+
 <div alert-message="VM.success">Saved...</div>
 
 	<legend>{{ VM.Product.title || 'New product' }}</legend>
-
+    {{ VM.Product }}
     <mcms-tabs class="tabbable" id="editProduct">
         <ul class="nav nav-tabs tab-bricky" id="myTabs">
             <tab-button state="general"><i class="green fa fa-home"></i> General</tab-button>

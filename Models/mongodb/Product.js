@@ -50,9 +50,11 @@ module.exports = function (mongoose, modelName) {
         if (num < 1){
             return num;
         }
+
         if (!lo.isNumber(num) || !num || typeof num == 'undefined' || num === 'NaN'){
            return 0;
         }
+
         return (num/100).toFixed(2);
     }
 

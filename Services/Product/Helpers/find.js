@@ -194,6 +194,14 @@ module.exports = (function(App,Connection,Package,privateMethods){
                     items = [];
                 }
                 Aggregate = Query;
+                lo.forEach(items,function(item){
+                    item.id = item._id.toString();
+                    if (App.Config.eshop.convertPricesToInt && item.eshop.price){
+                        item.eshop.price = (item.eshop.price/100).toFixed(2);
+                    }
+
+                });
+
                 returnObj.items = items;
 
                 next(err,items);

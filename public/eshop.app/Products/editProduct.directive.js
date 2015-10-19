@@ -2,10 +2,10 @@
     angular.module('mcms.eshop.product')
         .directive('editProduct', editProduct);
 
-    editProduct.$inject = ['eshopConfig'];
-    editProductController.$inject = ['eshop.productService','$timeout','eshopConfig','$routeParams','$rootScope','lodashFactory','configuration'];
+    editProduct.$inject = ['eshopConfig','$rootScope'];
+    editProductController.$inject = ['$scope','eshop.productService','$timeout','eshopConfig','$routeParams','$rootScope','lodashFactory','configuration'];
 
-    function editProduct(Config) {
+    function editProduct(Config,$rootScope) {
         return {
             controller: editProductController,
             templateUrl: Config.appUrl + "Products/editProduct.directive.html",
@@ -16,37 +16,53 @@
 
     }
 
-    function editProductController(Product,$timeout,Config,$routeParams,$rootScope,lo,BaseConfig){
+    function editProductController($scope,Product,$timeout,Config,$routeParams,$rootScope,lo,BaseConfig){
+        var modulesToWaitFor = [
+            'productMediaFiles',
+            'productExtraFields'
+        ],
+            modulesLoaded = 0;
+
+        $rootScope.$on('module.loaded', function(e,module) {
+            //do your will
+            if (modulesToWaitFor.indexOf(module) != -1){
+                modulesLoaded++;
+            }
+            console.log(modulesLoaded,module)
+            if (modulesLoaded == modulesToWaitFor.length){
+                allDone();
+            }
+        });
+
         var vm = this;
+        vm.Product = {
+            active : false,
+            categories : [],
+            ExtraFields : [],
+            thumb : {},
+            mediaFiles : {
+                images : [],
+                documents : [],
+                videos : []
+            },
+            related : [],
+            upselling : [],
+            productOptions : {},
+            settings : {}
+        };
 
-        if ($routeParams.id){
-            Product.get($routeParams.id).then(function(product){
+        function allDone(){
+            if ($routeParams.id != 'new'){
+                Product.get($routeParams.id).then(function(product){
 
-                $rootScope.$broadcast('product.loaded',product);
+                    $rootScope.$broadcast('product.loaded',product);
+                    vm.Product = product;
 
-                vm.Product = product;
-
-            });
-        } else {//new product
-            vm.Product = {
-                active : false,
-                categories : [],
-                ExtraFields : [],
-                thumb : {},
-                mediaFiles : {
-                    images : [],
-                    documents : [],
-                    videos : []
-                },
-                related : [],
-                upselling : [],
-                productOptions : {},
-                settings : {}
-            };
-            $rootScope.$broadcast('product.loaded',vm.Product);
+                });
+            } else {//new product
+                $rootScope.$broadcast('product.loaded',vm.Product);
+            }
         }
-
-
 
         $rootScope.$on('file.upload.progress',function(e,file,progress){//monitor file progress
 
