@@ -1,5 +1,6 @@
 <div class="modal fade" id="quickEditCategory">
     <div class="modal-dialog modal-lg">
+        <form ng-submit="Save()" method="post" novalidate >
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -8,10 +9,11 @@
             <div class="modal-body">
                 <div class="alert alert-success" ng-show="savedFlag">Saved...</div>
 
-                <form ng-submit="Save()" method="post" action="">
+
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="title" ng-model="Category.category"
+                        <input type="text" class="form-control" name="title" id="title" placeholder="title"
+                               ng-model="Category.category"
                                to-slug="Category.permalink">
                     </div>
 
@@ -33,12 +35,14 @@
                         <file-input ng-model="Category.settings.marketingBanner" config="uploadConfig"
                                     callback="onUploadDone(file,response)"></file-input>
                     </div>
-                </form>
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="Save()">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div><!-- /.modal-content -->
+        </form>
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
