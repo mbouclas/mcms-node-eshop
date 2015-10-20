@@ -16,7 +16,6 @@ module.exports = (function(App,Connection,Package){
 
         if (!lo.isArray(data)){//we will add a single item to the existing cache tag
             App.Cache[name][key] = data;
-
             return;
         }
 

@@ -6,7 +6,7 @@ module.exports = (function(App,Connection,Package){
 
         var Category = {
             category : data.category,
-            permalink : slug(data.category,{lower: true}),
+            permalink : data.permalink  || slug(data.category,{lower: true}),
             description : data.description || '',
             description_long : data.description_long || '',
             active : data.active || false,
