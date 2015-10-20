@@ -25,6 +25,7 @@
             if (!category) {//new
                 category = Service.newCategory();
             }
+
             vm.currentCategory = category;
         };
 

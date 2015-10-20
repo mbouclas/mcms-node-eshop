@@ -871,6 +871,7 @@
             if (!category) {//new
                 category = Service.newCategory();
             }
+
             vm.currentCategory = category;
         };
 
@@ -1089,7 +1090,6 @@
             });
 
             scope.Save = function(){
-                console.log('sss')
                 scope.onSave({category : scope.Category});//callback to the caller
             };
 

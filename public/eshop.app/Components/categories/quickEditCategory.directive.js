@@ -34,7 +34,6 @@
             });
 
             scope.Save = function(){
-                console.log('sss')
                 scope.onSave({category : scope.Category});//callback to the caller
             };
 
