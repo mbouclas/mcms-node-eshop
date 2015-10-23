@@ -21,7 +21,7 @@
     "fs-extra": "^0.16.5",
     "lodash": "^3.7.0",
     "mcms-node-cart": "0.0.6",
-    "mcms-node-eager-loader": "0.0.14",
+    "mcms-node-eager-loader": "0.0.15",
     "mongoosastic": "^3.1.0",
     "mongoose": "^4.0.4",
     "mongoose-materialized": "^0.1.8",

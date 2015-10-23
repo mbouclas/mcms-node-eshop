@@ -19,6 +19,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 }
 
                 App.Event.emit('cache.reset.object','products',id);
+                App.Event.emit('product.updated',Product.toObject());
                 callback(null, true);
             });
         });
