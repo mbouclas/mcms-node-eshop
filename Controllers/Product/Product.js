@@ -89,6 +89,7 @@ module.exports = (function(App,Package){
         }
 
         req.body.data.uid = req.user.uid;
+
         productServices.update(req.body.id,req.body.data,function(err,result){
             if (err){
                 return res.status(409).send({success:false, error : err});

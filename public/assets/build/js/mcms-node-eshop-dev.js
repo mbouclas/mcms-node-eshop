@@ -737,11 +737,8 @@
 
             var field = lo.find(vm.Product.ExtraFields,{_id : id});
             if (!field){
-                field = {
-                    _id : id,
-                    fieldID : id,
-                    value : ''
-                };
+                field = lo.find(vm.ExtraFields,{_id : id});
+                field.value = '';
                 vm.Product.ExtraFields.push(field);
                 return lo.find(vm.Product.ExtraFields,{_id : id});
             }

@@ -12,7 +12,10 @@ module.exports = (function(App,Connection,Package,privateMethods){
         //we are not using update cause it does not fire Model setters and that is a deal breaker
         // here as we need get/set methods for the price
         Model.findOne({_id : App.Helpers.MongoDB.idToObjId(id)}).exec(function(err,Product){
-            lo.merge(Product,product);
+            for (var i in product){
+                Product[i] = product[i];
+            }
+
             Product.save(function(err){
                 if (err) {
                     return callback(err);
