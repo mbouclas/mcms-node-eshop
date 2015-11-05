@@ -60,6 +60,9 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 fetchSku,
                 mergeResults
             ],function(errors,final){
+                if (!returnObj.items){
+                    return callback(null,returnObj);
+                }
                 //so.... now the aggregated array (relatedSkus) is ready. It contains the products in their final form (thumbs and all).
                 //What we need to do now is iterate the ES results and add as an array all of the found items.
                 // The way to do this is to compare the baseSku from the aggregated array to the one in our ES results.
