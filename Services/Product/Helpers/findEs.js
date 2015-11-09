@@ -15,7 +15,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
         Options = {},
         relatedSkus = [],
         Filters = {},
-        returnObj;
+        returnObj = {};
     var eagerLoader = require('mcms-node-eager-loader')(),
         Loader = new eagerLoader(),
         ES = App.Connections.elasticSearch,
@@ -60,7 +60,7 @@ module.exports = (function(App,Connection,Package,privateMethods){
                 fetchSku,
                 mergeResults
             ],function(errors,final){
-                if (!returnObj.items){
+                if (!returnObj || !returnObj.items){
                     return callback(null,returnObj);
                 }
                 //so.... now the aggregated array (relatedSkus) is ready. It contains the products in their final form (thumbs and all).
